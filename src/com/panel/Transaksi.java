@@ -300,6 +300,7 @@ public class Transaksi extends javax.swing.JPanel {
         jumlah = new javax.swing.JLabel();
         pictureBox2 = new com.swing.PictureBox();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);

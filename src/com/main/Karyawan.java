@@ -1,10 +1,13 @@
 package com.main;
 
+import com.panel.Testing;
 import com.panel.Transaksi;
 import com.swing.ModelItem;
 import com.swing.modelDetail;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -43,6 +46,13 @@ public class Karyawan extends javax.swing.JFrame {
        mainPanel.setLayout(new BorderLayout());
        mainPanel.add(main);
        
+    }
+    
+    public void showForm(Component com){
+        mainPanel.removeAll();
+        mainPanel.add(com);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }
     
     public void setMyInteger(int Value, int Value2){
@@ -126,6 +136,7 @@ public class Karyawan extends javax.swing.JFrame {
         background1 = new com.swing.background();
         Dasboard = new javax.swing.JPanel();
         shape2 = new com.swing.Shape();
+        pictureBox1 = new com.swing.PictureBox();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
         mainPanel = new com.swing.MainPanel();
@@ -156,15 +167,34 @@ public class Karyawan extends javax.swing.JFrame {
 
         Dasboard.setOpaque(false);
 
+        pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/buyIcon.png"))); // NOI18N
+        pictureBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pictureBox1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pictureBox1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pictureBox1MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
         shape2.setLayout(shape2Layout);
         shape2Layout.setHorizontalGroup(
             shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pictureBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addContainerGap())
         );
         shape2Layout.setVerticalGroup(
             shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(shape2Layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout DasboardLayout = new javax.swing.GroupLayout(Dasboard);
@@ -185,7 +215,7 @@ public class Karyawan extends javax.swing.JFrame {
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(1003, Short.MAX_VALUE)
+                .addContainerGap(1002, Short.MAX_VALUE)
                 .addComponent(tampilan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -201,11 +231,11 @@ public class Karyawan extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1062, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 582, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
@@ -261,6 +291,22 @@ public class Karyawan extends javax.swing.JFrame {
         main.setLabeltrx();
     }//GEN-LAST:event_formWindowActivated
 
+    private void pictureBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseClicked
+
+        showForm(main);
+        System.out.println("switch");
+    }//GEN-LAST:event_pictureBox1MouseClicked
+
+    private void pictureBox1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR) {
+        });
+    }//GEN-LAST:event_pictureBox1MouseEntered
+
+    private void pictureBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR) {
+        });
+    }//GEN-LAST:event_pictureBox1MouseExited
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -302,6 +348,7 @@ public class Karyawan extends javax.swing.JFrame {
     private com.swing.background background1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private com.swing.MainPanel mainPanel;
+    private com.swing.PictureBox pictureBox1;
     private com.swing.Shape shape2;
     private com.button.Tampilan tampilan1;
     // End of variables declaration//GEN-END:variables
