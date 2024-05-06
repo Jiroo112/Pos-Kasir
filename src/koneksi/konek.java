@@ -13,7 +13,7 @@ public class konek {
         if(koneksi==null){
             new Driver();
             
-            koneksi=DriverManager.getConnection("jdbc:mysql://localhost:3306/warung8", "root", "");
+            koneksi=DriverManager.getConnection("jdbc:mysql://localhost:3306/aplikasi_warung", "root", "");
         }
         return koneksi;
     }
