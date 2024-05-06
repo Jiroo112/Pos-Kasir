@@ -1,6 +1,5 @@
 package com.main;
 
-import com.panel.Testing;
 import com.panel.Transaksi;
 import com.swing.ModelItem;
 import com.swing.modelDetail;
