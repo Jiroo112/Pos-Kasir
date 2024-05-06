@@ -10,7 +10,9 @@ import com.panel.Greeting;
 import com.panel.Keuntungan;
 import com.panel.Transaksi;
 import com.panel.editt;
+import com.panel.Registrasi;
 import com.panel.tambahmenu;
+import com.panel.DataKaryawan;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -27,6 +29,8 @@ public class Admin extends javax.swing.JFrame {
     private editt edit;
     private tambahmenu tambah;
     private Greeting greet;
+    private Registrasi regist;
+    private DataKaryawan daker;
     public Admin() {
        initComponents();
         setBackground(new Color(0, 0, 0, 0));
@@ -40,6 +44,8 @@ public class Admin extends javax.swing.JFrame {
        edit = new editt();
        tambah = new tambahmenu();
        greet = new Greeting();
+       regist = new Registrasi();
+       daker = new DataKaryawan();
        
        mainPanel.setLayout(new BorderLayout());
        mainPanel.add(greet);
@@ -65,6 +71,8 @@ public class Admin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
         mainPanel = new com.swing.MainPanel();
@@ -102,6 +110,20 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Registrasi");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton6.setText("daker");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
         shape2.setLayout(shape2Layout);
         shape2Layout.setHorizontalGroup(
@@ -109,28 +131,29 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(shape2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addGroup(shape2Layout.createSequentialGroup()
-                        .addGroup(shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jButton4)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jButton5)
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         shape2Layout.setVerticalGroup(
             shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape2Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(194, 194, 194)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
                 .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -229,6 +252,14 @@ public class Admin extends javax.swing.JFrame {
         showForm(grafik);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        showForm(regist);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        showForm(daker);
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -272,6 +303,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private com.swing.MainPanel mainPanel;
     private com.swing.Shape shape2;
     private com.button.Tampilan tampilan1;
