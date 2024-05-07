@@ -206,6 +206,9 @@
           </SubComponents>
         </Container>
         <Container class="com.swing.MainPanel" name="mainPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="25"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">

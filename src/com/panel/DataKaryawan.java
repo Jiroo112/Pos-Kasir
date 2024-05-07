@@ -5,6 +5,9 @@
 package com.panel;
 
 import java.awt.Color;
+import com.main.Admin;
+import com.panel.Registrasi;
+import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
@@ -19,11 +22,21 @@ public class DataKaryawan extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
+    private Registrasi regist;
+    
     public DataKaryawan() {
         initComponents();
+        regist = new Registrasi();
         setBackground(new Color(0,0,0));
                 tabelkaryawan();
     }
+        public void showForm(Component com){
+        Admin.mainPanel.removeAll();
+        Admin.mainPanel.add(com);
+        Admin.mainPanel.repaint();
+        Admin.mainPanel.revalidate();
+    }
+        
     public void tabelkaryawan(){
     DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Username");
@@ -67,7 +80,6 @@ public class DataKaryawan extends javax.swing.JPanel {
         background1 = new com.swing.background();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        karyawan = new javax.swing.JTable();
         btn_tambah = new javax.swing.JButton();
         btn_edit = new javax.swing.JButton();
         btn_hapus = new javax.swing.JButton();
@@ -177,7 +189,7 @@ public class DataKaryawan extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_hapusActionPerformed
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
-
+        showForm(regist);
     }//GEN-LAST:event_btn_tambahMouseClicked
 
     private void btn_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editMouseClicked
@@ -192,6 +204,6 @@ public class DataKaryawan extends javax.swing.JPanel {
     private javax.swing.JButton btn_tambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable karyawan;
+    public static final javax.swing.JTable karyawan = new javax.swing.JTable();
     // End of variables declaration//GEN-END:variables
 }

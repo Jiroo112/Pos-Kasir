@@ -3,6 +3,9 @@ import koneksi.konek;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import com.main.Admin;
+import com.panel.DataKaryawan;
+import java.awt.Component;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -14,6 +17,8 @@ public class Registrasi extends javax.swing.JPanel {
     /**
      * Creates new form Registrasi
      */
+    public DataKaryawan dk;
+    
     public Registrasi() {
         initComponents();
     }
@@ -47,6 +52,7 @@ public class Registrasi extends javax.swing.JPanel {
         passwordField = new javax.swing.JPasswordField();
         rePassField = new javax.swing.JPasswordField();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1020, 520));
         setPreferredSize(new java.awt.Dimension(1020, 520));
@@ -155,14 +161,23 @@ public class Registrasi extends javax.swing.JPanel {
             }
         });
 
+        jLabel10.setText("Balik");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
         background1.setLayout(background1Layout);
         background1Layout.setHorizontalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(background1Layout.createSequentialGroup()
-                .addGap(310, 310, 310)
+                .addGap(89, 89, 89)
+                .addComponent(jLabel10)
+                .addGap(178, 178, 178)
                 .addComponent(jLabel1)
-                .addGap(0, 313, Short.MAX_VALUE))
+                .addGap(0, 168, Short.MAX_VALUE))
             .addGroup(background1Layout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -190,7 +205,7 @@ public class Registrasi extends javax.swing.JPanel {
                     .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alamatField, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         background1Layout.setVerticalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +216,9 @@ public class Registrasi extends javax.swing.JPanel {
                         .addComponent(jLabel4))
                     .addGroup(background1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)))
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,6 +381,10 @@ public class Registrasi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBox1MouseClicked
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+
+    }//GEN-LAST:event_jLabel10MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alamatField;
@@ -371,6 +392,7 @@ public class Registrasi extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> genderCombo1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -387,4 +409,8 @@ public class Registrasi extends javax.swing.JPanel {
     private javax.swing.JPasswordField rePassField;
     private javax.swing.JTextField usernameField1;
     // End of variables declaration//GEN-END:variables
+
+    private void showForm(DataKaryawan dk) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

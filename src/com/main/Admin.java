@@ -75,7 +75,6 @@ public class Admin extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
-        mainPanel = new com.swing.MainPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -305,7 +304,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private com.swing.MainPanel mainPanel;
+    public static final com.swing.MainPanel mainPanel = new com.swing.MainPanel();
     private com.swing.Shape shape2;
     private com.button.Tampilan tampilan1;
     // End of variables declaration//GEN-END:variables
