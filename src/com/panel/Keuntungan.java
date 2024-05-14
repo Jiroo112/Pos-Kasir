@@ -1,13 +1,7 @@
-
 package com.panel;
 
-import com.main.Admin;
-import static com.panel.editt.main;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -15,19 +9,9 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import koneksi.konek;
-import org.jfree.chart.*;
-import org.jfree.chart.axis.CategoryAxis;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.tabbedui.RootPanel;
 import javax.swing.BorderFactory;
 
 public class Keuntungan extends javax.swing.JPanel {

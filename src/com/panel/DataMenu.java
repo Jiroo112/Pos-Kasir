@@ -1,38 +1,17 @@
 package com.panel;
 
-import com.button.Tampilan;
-import com.main.Admin;
-import com.swing.Shape;
-import java.awt.AlphaComposite;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.sql.Statement;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.plaf.RootPaneUI;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 
@@ -282,7 +261,9 @@ public class DataMenu extends javax.swing.JPanel {
 
         background1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 710, 210));
 
+        kolomCari.setBackground(new java.awt.Color(255, 255, 255));
         kolomCari.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        kolomCari.setForeground(new java.awt.Color(0, 0, 0));
         kolomCari.setBorder(null);
         background1.add(kolomCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 470, 40));
 

@@ -46,7 +46,7 @@ public class Item extends javax.swing.JPanel {
     public void paint(Graphics graph){
         Graphics2D g2 = (Graphics2D) graph.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(new Color(242, 242, 242));
+        g2.setColor(new Color(255, 255, 255));
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
         if(selected){
             g2.setColor(new Color(0, 167, 157));

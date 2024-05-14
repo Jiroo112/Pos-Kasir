@@ -1,7 +1,7 @@
 package com.button;
 
 import com.swing.Shape;
-import com.swing.background;
+import com.swing.background2;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -14,7 +14,7 @@ public class Close extends javax.swing.JPanel {
         setOpaque(false);
     }
     
-    public void event(JFrame frame, background panel, Shape panel2){
+    public void event(JFrame frame, background2 panel){
         close.addActionListener(new  ActionListener() {
             @Override
             public void actionPerformed(ActionEvent close){

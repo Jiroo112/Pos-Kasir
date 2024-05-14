@@ -164,16 +164,16 @@ public class popUp_bayar extends javax.swing.JFrame {
     private void initComponents() {
 
         shape1 = new com.swing.Shape();
-        background1 = new com.swing.background();
+        background21 = new com.swing.background2();
         pictureBox1 = new com.swing.PictureBox();
         jLabel1 = new javax.swing.JLabel();
+        pembayaran = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        kembali = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         fbutton1 = new com.button.Fbutton();
         bayar = new com.button.Fbutton();
-        pembayaran = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        kembali = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -193,6 +193,17 @@ public class popUp_bayar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bayar :");
 
+        pembayaran.setBackground(new java.awt.Color(255, 255, 255));
+        pembayaran.setForeground(new java.awt.Color(0, 0, 0));
+        pembayaran.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pembayaran.setBorder(null);
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Kembalian :");
+
+        kembali.setForeground(new java.awt.Color(0, 0, 0));
+        kembali.setText("0");
+
         fbutton1.setText("Batal");
         fbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,54 +218,39 @@ public class popUp_bayar extends javax.swing.JFrame {
             }
         });
 
-        pembayaran.setBackground(new java.awt.Color(255, 255, 255));
-        pembayaran.setForeground(new java.awt.Color(0, 0, 0));
-        pembayaran.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        pembayaran.setBorder(null);
-
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Kembalian :");
-
-        kembali.setForeground(new java.awt.Color(0, 0, 0));
-        kembali.setText("0");
-
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(fbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
-                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(kembali, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout background21Layout = new javax.swing.GroupLayout(background21);
+        background21.setLayout(background21Layout);
+        background21Layout.setHorizontalGroup(
+            background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background21Layout.createSequentialGroup()
+                .addGroup(background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background21Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(background21Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pembayaran)
+                            .addComponent(jSeparator1)
+                            .addComponent(kembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator2)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pembayaran, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, background1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(99, 99, 99))))
+                            .addGroup(background21Layout.createSequentialGroup()
+                                .addGroup(background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(background21Layout.createSequentialGroup()
+                                .addComponent(fbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
+        background21Layout.setVerticalGroup(
+            background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background21Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,15 +258,15 @@ public class popUp_bayar extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(kembali)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(28, 28, 28)
+                .addGroup(background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
@@ -279,14 +275,14 @@ public class popUp_bayar extends javax.swing.JFrame {
             shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(background21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         shape1Layout.setVerticalGroup(
             shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(background21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -294,11 +290,11 @@ public class popUp_bayar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -354,7 +350,7 @@ public class popUp_bayar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.swing.background background1;
+    private com.swing.background2 background21;
     private com.button.Fbutton bayar;
     private com.button.Fbutton fbutton1;
     private javax.swing.JLabel jLabel1;

@@ -289,7 +289,7 @@ public class Transaksi extends javax.swing.JPanel {
         detailtrx = new com.swing.Shape();
         jLabel2 = new javax.swing.JLabel();
         trx = new javax.swing.JLabel();
-        background1 = new com.swing.background();
+        background21 = new com.swing.background2();
         scroll2 = new javax.swing.JScrollPane();
         panelItem2 = new com.swing.PanelItem();
         shape2 = new com.swing.Shape();
@@ -299,7 +299,7 @@ public class Transaksi extends javax.swing.JPanel {
         jumlah = new javax.swing.JLabel();
         pictureBox2 = new com.swing.PictureBox();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(222, 255, 254));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -308,6 +308,8 @@ public class Transaksi extends javax.swing.JPanel {
 
         Scroll.setBorder(null);
         Scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelItem1.setBackground(new java.awt.Color(222, 255, 254));
         Scroll.setViewportView(panelItem1);
 
         user.setForeground(new java.awt.Color(255, 255, 255));
@@ -348,21 +350,21 @@ public class Transaksi extends javax.swing.JPanel {
         scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll2.setViewportView(panelItem2);
 
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
+        javax.swing.GroupLayout background21Layout = new javax.swing.GroupLayout(background21);
+        background21.setLayout(background21Layout);
+        background21Layout.setHorizontalGroup(
+            background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scroll2)
+                .addComponent(scroll2, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
+        background21Layout.setVerticalGroup(
+            background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scroll2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(scroll2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout detailtrxLayout = new javax.swing.GroupLayout(detailtrx);
@@ -372,12 +374,12 @@ public class Transaksi extends javax.swing.JPanel {
             .addGroup(detailtrxLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(detailtrxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(background21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(detailtrxLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(trx, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+                .addGap(14, 14, 14))
         );
         detailtrxLayout.setVerticalGroup(
             detailtrxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,8 +389,8 @@ public class Transaksi extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(trx))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(background21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -501,7 +503,7 @@ public class Transaksi extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Scroll;
-    private com.swing.background background1;
+    private com.swing.background2 background21;
     private javax.swing.JLabel date;
     private com.swing.Shape detailtrx;
     private javax.swing.JLabel jLabel2;

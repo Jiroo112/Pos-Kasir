@@ -35,7 +35,7 @@ public class Karyawan extends javax.swing.JFrame {
     public Karyawan() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        tampilan1.event(this, background1,shape2);
+        tampilan1.event(this, background1);
         init();
     }
     
@@ -134,7 +134,7 @@ public class Karyawan extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         background1 = new com.swing.background();
         Dasboard = new javax.swing.JPanel();
-        shape2 = new com.swing.Shape();
+        shape41 = new com.swing.Shape4();
         pictureBox1 = new com.swing.PictureBox();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
@@ -179,20 +179,19 @@ public class Karyawan extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
-        shape2.setLayout(shape2Layout);
-        shape2Layout.setHorizontalGroup(
-            shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pictureBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout shape41Layout = new javax.swing.GroupLayout(shape41);
+        shape41.setLayout(shape41Layout);
+        shape41Layout.setHorizontalGroup(
+            shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shape41Layout.createSequentialGroup()
+                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
-        shape2Layout.setVerticalGroup(
-            shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape2Layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+        shape41Layout.setVerticalGroup(
+            shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shape41Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -200,11 +199,14 @@ public class Karyawan extends javax.swing.JFrame {
         Dasboard.setLayout(DasboardLayout);
         DasboardLayout.setHorizontalGroup(
             DasboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(shape41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         DasboardLayout.setVerticalGroup(
             DasboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DasboardLayout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(shape41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(201, 201, 201))
         );
 
         Header.setOpaque(false);
@@ -290,21 +292,21 @@ public class Karyawan extends javax.swing.JFrame {
         main.setLabeltrx();
     }//GEN-LAST:event_formWindowActivated
 
-    private void pictureBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseClicked
-
-        showForm(main);
-        System.out.println("switch");
-    }//GEN-LAST:event_pictureBox1MouseClicked
+    private void pictureBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR) {
+        });
+    }//GEN-LAST:event_pictureBox1MouseExited
 
     private void pictureBox1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseEntered
         setCursor(new Cursor(Cursor.HAND_CURSOR) {
         });
     }//GEN-LAST:event_pictureBox1MouseEntered
 
-    private void pictureBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR) {
-        });
-    }//GEN-LAST:event_pictureBox1MouseExited
+    private void pictureBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseClicked
+
+        showForm(main);
+        System.out.println("switch");
+    }//GEN-LAST:event_pictureBox1MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -348,7 +350,7 @@ public class Karyawan extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private com.swing.MainPanel mainPanel;
     private com.swing.PictureBox pictureBox1;
-    private com.swing.Shape shape2;
+    private com.swing.Shape4 shape41;
     private com.button.Tampilan tampilan1;
     // End of variables declaration//GEN-END:variables
 }

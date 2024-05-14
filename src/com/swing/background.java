@@ -26,7 +26,7 @@ public class background extends JPanel{
     public void paint(Graphics grph){
         Graphics2D g2 = (Graphics2D) grph.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(Color.WHITE);
+        g2.setColor(new Color(222,255,254));
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), round, round);
         g2.dispose();
         super.paint(grph);

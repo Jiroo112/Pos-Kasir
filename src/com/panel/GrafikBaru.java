@@ -4,7 +4,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
-
 import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
@@ -14,7 +13,6 @@ import java.util.Date;
 import koneksi.konek;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CategoryPlot;
@@ -286,7 +284,6 @@ private void tampilkanTopSellerMakanan() {
         makanan1 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         minuman1 = new javax.swing.JTable();
-        labelMinuman1 = new javax.swing.JLabel();
         shape1 = new com.swing.Shape();
         bestSeller3minuman1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -368,9 +365,6 @@ private void tampilkanTopSellerMakanan() {
         minuman1.setShowHorizontalLines(true);
         jScrollPane4.setViewportView(minuman1);
 
-        labelMinuman1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        labelMinuman1.setText("minuman");
-
         bestSeller3minuman1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         bestSeller3minuman1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -437,17 +431,13 @@ private void tampilkanTopSellerMakanan() {
         background1Layout.setHorizontalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(background1Layout.createSequentialGroup()
-                .addGap(200, 684, Short.MAX_VALUE)
-                .addComponent(labelMinuman1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(250, 250, 250))
-            .addGroup(background1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(GrafikGaris1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(shape2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(shape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(background1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -467,9 +457,7 @@ private void tampilkanTopSellerMakanan() {
                     .addGroup(background1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(GrafikGaris1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62)
-                .addComponent(labelMinuman1)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
             .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(background1Layout.createSequentialGroup()
                     .addContainerGap(352, Short.MAX_VALUE)
@@ -499,7 +487,6 @@ private void tampilkanTopSellerMakanan() {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelMinuman;
-    private javax.swing.JLabel labelMinuman1;
     private javax.swing.JTable makanan;
     private javax.swing.JTable makanan1;
     private javax.swing.JTable minuman;

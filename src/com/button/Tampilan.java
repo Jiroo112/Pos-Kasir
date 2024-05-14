@@ -14,7 +14,7 @@ public class Tampilan extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
     }
-    public void event(JFrame frame, background panel, Shape panel2){
+    public void event(JFrame frame, background panel){
         close.addActionListener(new  ActionListener() {
             @Override
             public void actionPerformed(ActionEvent close){
@@ -26,12 +26,10 @@ public class Tampilan extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent restore){
                 if(frame.getExtendedState()==JFrame.MAXIMIZED_BOTH){
                     panel.setRound(20);
-                    panel2.setRound(20);
                     frame.setExtendedState(JFrame.NORMAL);
                 }
                 else{
                     panel.setRound(0);
-                    panel2.setRound(0);
                     frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 }
             }

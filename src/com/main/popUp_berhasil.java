@@ -12,7 +12,7 @@ public class popUp_berhasil extends javax.swing.JFrame {
         initComponents();
         font();
         setBackground(new Color(0, 0, 0, 0));
-        close1.event(this,background1,shape1);
+        close1.event(this, background21);
 
     }
     
@@ -30,9 +30,9 @@ public class popUp_berhasil extends javax.swing.JFrame {
     private void initComponents() {
 
         shape1 = new com.swing.Shape();
-        background1 = new com.swing.background();
-        label1 = new javax.swing.JLabel();
+        background21 = new com.swing.background2();
         gambar = new javax.swing.JLabel();
+        label1 = new javax.swing.JLabel();
         close1 = new com.button.Close();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,41 +43,41 @@ public class popUp_berhasil extends javax.swing.JFrame {
             }
         });
 
+        gambar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/picture/Resize Check.gif"))); // NOI18N
+
         label1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         label1.setForeground(new java.awt.Color(0, 0, 0));
         label1.setText("Transaksi Berhasil!!");
 
-        gambar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/picture/Resize Check.gif"))); // NOI18N
-
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(label1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(background1Layout.createSequentialGroup()
+        javax.swing.GroupLayout background21Layout = new javax.swing.GroupLayout(background21);
+        background21.setLayout(background21Layout);
+        background21Layout.setHorizontalGroup(
+            background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background21Layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addGroup(background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background21Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(label1))
+                    .addGroup(background21Layout.createSequentialGroup()
                         .addComponent(gambar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+        background21Layout.setVerticalGroup(
+            background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background21Layout.createSequentialGroup()
+                .addGroup(background21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background21Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(background1Layout.createSequentialGroup()
+                    .addGroup(background21Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label1)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
@@ -86,14 +86,14 @@ public class popUp_berhasil extends javax.swing.JFrame {
             shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(background21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         shape1Layout.setVerticalGroup(
             shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(background21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -101,11 +101,11 @@ public class popUp_berhasil extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -149,7 +149,7 @@ public class popUp_berhasil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.swing.background background1;
+    private com.swing.background2 background21;
     private com.button.Close close1;
     private javax.swing.JLabel gambar;
     private javax.swing.JLabel label1;

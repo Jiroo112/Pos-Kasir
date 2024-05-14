@@ -51,59 +51,44 @@ String path2 = null;
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
-        jPanel1 = new javax.swing.JPanel();
+        shape1 = new com.swing.Shape();
+        background1 = new com.swing.background();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_kode = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        filefoto = new javax.swing.JLabel();
+        btn_pilih = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txt_nama = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
         txt_harga = new javax.swing.JTextField();
-        btn_pilih = new javax.swing.JButton();
-        filefoto = new javax.swing.JLabel();
-        btn_cancel = new javax.swing.JButton();
-        btn_simpan = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        txt_stok = new javax.swing.JSpinner();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel7 = new javax.swing.JLabel();
-        txt_stok = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
+        btn_simpan = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 153));
         jLabel6.setText("Tambah Menu");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 200, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel2.setText("Kode Menu");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 130, 40));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Kode Menu :");
 
-        txt_kode.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.add(txt_kode, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 220, 40));
+        txt_kode.setBackground(new java.awt.Color(222, 255, 254));
+        txt_kode.setForeground(new java.awt.Color(0, 0, 0));
+        txt_kode.setBorder(null);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel3.setText("Nama");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 130, 40));
-
-        txt_nama.setBackground(new java.awt.Color(0, 153, 153));
-        txt_nama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_namaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 220, 40));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel1.setText("Stok");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 130, 40));
-
-        txt_harga.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.add(txt_harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 220, 40));
+        filefoto.setBackground(new java.awt.Color(255, 255, 255));
+        filefoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btn_pilih.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_pilih.setText("Pilih Foto");
@@ -112,65 +97,168 @@ String path2 = null;
                 btn_pilihActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_pilih, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 100, 23));
 
-        filefoto.setBackground(new java.awt.Color(255, 255, 255));
-        filefoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(filefoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 180, 160));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Nama :");
 
-        btn_cancel.setBackground(new java.awt.Color(0, 153, 153));
-        btn_cancel.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        btn_cancel.setText("Cancel");
-        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+        txt_nama.setBackground(new java.awt.Color(222, 255, 254));
+        txt_nama.setBorder(null);
+        txt_nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelActionPerformed(evt);
+                txt_namaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 120, 40));
 
-        btn_simpan.setBackground(new java.awt.Color(0, 153, 153));
-        btn_simpan.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        btn_simpan.setText("Simpan");
-        btn_simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_simpanActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 120, 40));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Harga :");
 
-        jCheckBox1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        txt_harga.setBackground(new java.awt.Color(222, 255, 254));
+        txt_harga.setBorder(null);
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Stok :");
+
+        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox1.setText("Makanan");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
-        jCheckBox2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox2.setText("Minuman");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel7.setText("Harga");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 130, 40));
-        jPanel1.add(txt_stok, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 130, 30));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 470));
+        btn_simpan.setBackground(new java.awt.Color(0, 153, 153));
+        btn_simpan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_simpan.setText("Simpan");
+        btn_simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_simpanActionPerformed(evt);
+            }
+        });
+
+        btn_cancel.setBackground(new java.awt.Color(0, 153, 153));
+        btn_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancel.setText("Cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
+        background1.setLayout(background1Layout);
+        background1Layout.setHorizontalGroup(
+            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(134, 134, 134))
+            .addGroup(background1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_stok, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(txt_kode)
+                            .addComponent(jSeparator1)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nama)
+                            .addComponent(jSeparator2)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_harga)
+                            .addComponent(jSeparator3)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filefoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_pilih, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(btn_cancel)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_simpan)))
+                .addGap(28, 28, 28))
+        );
+        background1Layout.setVerticalGroup(
+            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(background1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addComponent(filefoto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_pilih, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(169, Short.MAX_VALUE))
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_kode, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jCheckBox2)
+                            .addComponent(btn_simpan)
+                            .addComponent(btn_cancel))
+                        .addGap(46, 46, 46))))
+        );
+
+        javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
+        shape1.setLayout(shape1Layout);
+        shape1Layout.setHorizontalGroup(
+            shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shape1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        shape1Layout.setVerticalGroup(
+            shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shape1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(shape1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(shape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -324,6 +412,7 @@ String path2 = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.swing.background background1;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_pilih;
     private javax.swing.JButton btn_simpan;
@@ -333,11 +422,13 @@ String path2 = null;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSpinner jSpinner1;
+    private com.swing.Shape shape1;
     private javax.swing.JTextField txt_harga;
     private javax.swing.JTextField txt_kode;
     private javax.swing.JTextField txt_nama;
