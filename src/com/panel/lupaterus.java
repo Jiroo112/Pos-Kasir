@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage; 
 import javax.net.ssl.SSLSocketFactory;
 
 import koneksi.konek;
@@ -28,7 +28,7 @@ import javax.swing.JTextField;
 public class lupaterus extends javax.swing.JFrame {
     
     private static final String email_pengirim = "newmooojiwon@gmail.com";
-    private static final String pw_pengirim = "kjdd axbr eftw mrfr";
+    private static final String pw_pengirim = "ytwz kstr kgeb xlyg";
 
     private Map<String, String> credentials;
     private Map<String, String> recoveryCodes;
@@ -40,7 +40,7 @@ public class lupaterus extends javax.swing.JFrame {
     recoveryCodes = new HashMap<>();
       initComponents();
     setBackground(new Color(0, 0, 0, 0));
-    close1.event(this,background1,Outter);
+
     
   
 }
@@ -282,14 +282,6 @@ public class lupaterus extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(lupaterus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

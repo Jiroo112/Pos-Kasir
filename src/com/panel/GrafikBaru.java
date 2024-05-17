@@ -4,6 +4,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.util.Date;
 import koneksi.konek;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.CategoryPlot;
@@ -34,10 +36,12 @@ public class GrafikBaru extends javax.swing.JPanel {
     
    public GrafikBaru() {
     initComponents();
-    Date tanggalAwal = getOneMonthAgoDate(); 
-    Date tanggalAkhir = new Date(); 
-    defaultDataset = getData(tanggalAwal, tanggalAkhir);
-    showChart(defaultDataset);
+    setBackground(new Color(250, 250, 250));
+    chart1.addLegend("belanja", new Color(245, 189, 135)); // Orange
+    chart1.addLegend("transaksi", new Color(135, 189, 245));   // Blue
+    chart1.addLegend("keuntungan", new Color(189, 135, 245)); // Purp
+    updateChart();
+    
     tampilkanTopSellerMakanan();
     tampilkanTopSellerMinuman();
     makanan();
@@ -49,196 +53,165 @@ private Date getOneMonthAgoDate() {
         calendar.add(Calendar.MONTH, -1); 
         return calendar.getTime();
 }
-
- private JFreeChart createChart(DefaultCategoryDataset dataset) {
-    JFreeChart chart = ChartFactory.createLineChart(
-            "Grafik Keuntungan, Modal, dan Transaksi",
-            "Tanggal",
-            "Jumlah",
-            dataset,     
-            PlotOrientation.VERTICAL,
-            true,
-            true,
-            false
-    );
-
-    CategoryPlot plot = (CategoryPlot) chart.getPlot();
-
-    LineAndShapeRenderer renderer = new LineAndShapeRenderer();
-    renderer.setSeriesPaint(0, Color.BLUE);
-    renderer.setSeriesStroke(0, new BasicStroke(2));
-    renderer.setSeriesPaint(1, Color.RED);
-    renderer.setSeriesStroke(1, new BasicStroke(2));
-    renderer.setSeriesPaint(2, Color.GREEN);
-    renderer.setSeriesStroke(2, new BasicStroke(2));
-    plot.setRenderer(renderer);
-
-    CategoryAxis domainAxis = plot.getDomainAxis();
-    domainAxis.setLabel("Tanggal");
-
-    NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-    rangeAxis.setLabel("Jumlah");
-
-    return chart;
-}
-    private DefaultCategoryDataset getData(Date startDate1, Date endDate1) {
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String startStr = dateFormat.format(startDate1);
-    String endStr = dateFormat.format(endDate1);
+  public void updateChart() {
+    String tanggalPattern = "yyyy-MM-dd";
+    SimpleDateFormat dateFormat = new SimpleDateFormat(tanggalPattern);
 
     try {
-        String queryTransaksi = "SELECT DATE_FORMAT(tgl_transaksi, '%Y-%m-%d %H:%i:%s') as tgl_transaksi, total FROM transaksi WHERE tgl_transaksi BETWEEN ? AND ? ORDER BY tgl_transaksi ASC";
+        // Create dataset
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        // Get start and end date one month ago
+        java.util.Date oneMonthAgo = getOneMonthAgoDate();
+        java.sql.Date startDate = new java.sql.Date(oneMonthAgo.getTime());
+        java.sql.Date endDate = new java.sql.Date(new java.util.Date().getTime());
+
+        // SQL query to fetch transactions and expenses within the last month
+        String queryTransaksi = "SELECT DATE_FORMAT(tgl_transaksi, '%Y-%m-%d %H:%i:%s') as tgl_transaksi, SUM(total) as total FROM transaksi WHERE tgl_transaksi BETWEEN ? AND ? GROUP BY tgl_transaksi ORDER BY tgl_transaksi ASC";
+        String queryBelanja = "SELECT DATE_FORMAT(tanggal, '%Y-%m-%d %H:%i:%s') as tanggal, SUM(total) as total FROM belanja WHERE tanggal BETWEEN ? AND ? GROUP BY tanggal ORDER BY tanggal ASC";
         PreparedStatement statementTransaksi = konek.GetConnection().prepareStatement(queryTransaksi);
-        statementTransaksi.setString(1, startStr);
-        statementTransaksi.setString(2, endStr);
+        PreparedStatement statementBelanja = konek.GetConnection().prepareStatement(queryBelanja);
+        statementTransaksi.setDate(1, startDate);
+        statementTransaksi.setDate(2, endDate);
+        statementBelanja.setDate(1, startDate);
+        statementBelanja.setDate(2, endDate);
+
+        ResultSet resBelanja = statementBelanja.executeQuery();
+        while (resBelanja.next()) {
+            dataset.addValue(resBelanja.getDouble("total"), "belanja", resBelanja.getString("tanggal"));
+        }
+
+        // Execute queries for transactions and calculate profit
         ResultSet resTransaksi = statementTransaksi.executeQuery();
-
-        String queryModal = "SELECT DATE_FORMAT(tanggal, '%Y-%m-%d %H:%i:%s') as tanggal, total FROM belanja WHERE tanggal BETWEEN ? AND ? ORDER BY tanggal ASC";
-        PreparedStatement statementModal = konek.GetConnection().prepareStatement(queryModal);
-        statementModal.setString(1, startStr);
-        statementModal.setString(2, endStr);
-        ResultSet resModal = statementModal.executeQuery();
-
         while (resTransaksi.next()) {
-            dataset.addValue(resTransaksi.getDouble("total"), "transaksi", dateFormat.format(resTransaksi.getDate("tgl_transaksi")));
+            String tanggal = resTransaksi.getString("tgl_transaksi");
+            double totalTransaksi = resTransaksi.getDouble("total");
+            double totalBelanja = 0.0;
+            ResultSet resModal = statementBelanja.executeQuery();
+            while (resModal.next()) {
+                if (resModal.getString("tanggal").equals(tanggal)) {
+                    totalBelanja += resModal.getDouble("total");
+                }
+            }
+            double keuntungan = totalTransaksi - totalBelanja;
+            dataset.addValue(totalTransaksi, "transaksi", tanggal);
+            dataset.addValue(totalBelanja, "belanja", tanggal);
+            dataset.addValue(keuntungan, "keuntungan", tanggal);
         }
 
-        while (resModal.next()) {
-            dataset.addValue(resModal.getDouble("total"), "modal", dateFormat.format(resModal.getDate("tanggal")));
+        // Set dataset to the chart
+        String[] seriesKeys = {"belanja", "transaksi", "keuntungan"};
+        chart1.setData(seriesKeys, dataset);
+        
+        chart1.start();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }    
+  }
+
+    public DefaultCategoryDataset makanan() {
+       DefaultCategoryDataset defaultDataset = new DefaultCategoryDataset();
+      DefaultTableModel tblMakanan = new DefaultTableModel();
+      tblMakanan.addColumn("Makanan");
+      tblMakanan.addColumn("Harga");
+      tblMakanan.addColumn("StokTerjual/Bulan");
+      makanan1.setModel(tblMakanan);
+      makanan1.getTableHeader().setBackground(new Color(115,206,191));
+      makanan1.getTableHeader().setForeground(new Color(0,0,0));
+      try {
+          Statement st = konek.GetConnection().createStatement();
+          ResultSet rs = st.executeQuery("SELECT m.nama_menu, m.harga, SUM(dt.jumlah) AS total_terjual " +
+                                         "FROM menu m " +
+                                         "LEFT JOIN detail_transaksi dt ON m.kode_menu = dt.kode_menu " +
+                                         "JOIN transaksi t ON dt.kode_transaksi = t.kode_transaksi " +
+                                         "WHERE m.kode_menu LIKE '%MA%' " +
+                                         "AND t.tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) " +
+                                         "GROUP BY m.nama_menu");
+          while (rs.next()) {
+              tblMakanan.addRow(new Object[]{
+                  rs.getString("nama_menu"),
+                  rs.getString("harga"),
+                  rs.getString("total_terjual")
+              });
+          }
+      } catch (SQLException e) {
+          JOptionPane.showMessageDialog(this, e.getMessage());
+      }
+      return defaultDataset;
+  }
+    public DefaultCategoryDataset minuman() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultTableModel tblMinuman = new DefaultTableModel();
+        tblMinuman.addColumn("Minuman");
+        tblMinuman.addColumn("Harga");
+        tblMinuman.addColumn("StokTerjual/Bulan");
+        minuman1.setModel(tblMinuman);
+        minuman1.getTableHeader().setBackground(new Color(115,206,191));
+        minuman1.getTableHeader().setForeground(new Color(0,0,0));
+        try {
+            Statement st = konek.GetConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT m.nama_menu, m.harga, SUM(dt.jumlah) AS total_terjual " +
+                                           "FROM menu m " +
+                                           "LEFT JOIN detail_transaksi dt ON m.kode_menu = dt.kode_menu " +
+                                           "JOIN transaksi t ON dt.kode_transaksi = t.kode_transaksi " +
+                                           "WHERE m.kode_menu LIKE '%MI%' " +
+                                           "AND t.tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) " +
+                                           "GROUP BY m.nama_menu");
+            while(rs.next()){
+                tblMinuman.addRow(new Object[]{
+                        rs.getString("nama_menu"),
+                        rs.getString("harga"),
+                        rs.getString("total_terjual")
+                });
+                dataset.addValue(rs.getDouble("total_terjual"), "Minuman", rs.getString("nama_menu"));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        return dataset;
+
+        }
+    private String topSellerInfo(ResultSet rs) throws SQLException {
+       StringBuilder sb = new StringBuilder();
+       sb.append("Top 3 Menu Terlaris:\n");
+       int rank = 1;
+       while (rs.next()) {
+           String namaMenu = rs.getString("nama_menu");
+           int totalTerjual = rs.getInt("total_terjual");
+           sb.append(rank).append(". ").append(namaMenu).append(" - ").append(totalTerjual).append(" terjual\n");
+           rank++;
+       }
+       return sb.toString();
+   }
+
+    private void tampilkanTopSellerMakanan() {
+       try {
+        String queryTopSellerMakanan = "SELECT m.nama_menu, SUM(dt.jumlah) AS total_terjual FROM menu m "
+                + "LEFT JOIN detail_transaksi dt ON m.kode_menu = dt.kode_menu AND m.kode_menu LIKE 'MA%' "
+                + "JOIN transaksi t ON dt.kode_transaksi = t.kode_transaksi WHERE t.tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) "
+                + "GROUP BY m.nama_menu ORDER BY total_terjual DESC LIMIT 3;";
+
+        PreparedStatement psTopSeller = konek.GetConnection().prepareStatement(queryTopSellerMakanan);
+        ResultSet rsTopSeller = psTopSeller.executeQuery();
+
+        String topSellerText = "";
+        while (rsTopSeller.next()) {
+            String namaMenu = rsTopSeller.getString("nama_menu");
+            int totalTerjual = rsTopSeller.getInt("total_terjual");
+            topSellerText +=  "<html>" +  namaMenu + " : " + totalTerjual + " terjual <br/>";
         }
 
-        ResultSet resTransaksiKeuntungan = statementTransaksi.executeQuery();
-        ResultSet resModalKeuntungan = statementModal.executeQuery();
-        while (resTransaksiKeuntungan.next() && resModalKeuntungan.next()) {
-            double keuntungan = resTransaksiKeuntungan.getDouble("total") - resModalKeuntungan.getDouble("total");
-            dataset.addValue(keuntungan, "Keuntungan", dateFormat.format(resTransaksiKeuntungan.getDate("tgl_transaksi")));
-        }
+        bestSeller3makanan1.setText(topSellerText);
+
+        rsTopSeller.close();
+        psTopSeller.close();
 
     } catch (SQLException e) {
         e.printStackTrace();
     }
 
-    return dataset;    }
-private void showChart(DefaultCategoryDataset dataset) {
-    try {
-        chart = createChart(dataset);
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(525, 310));
-        GrafikGaris1.removeAll();
-        GrafikGaris1.add(chartPanel);
-        GrafikGaris1.revalidate();
-        GrafikGaris1.repaint();
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
     }
-    
-}
-
-  public DefaultCategoryDataset makanan() {
-     DefaultCategoryDataset defaultDataset = new DefaultCategoryDataset();
-    DefaultTableModel tblMakanan = new DefaultTableModel();
-    tblMakanan.addColumn("Makanan");
-    tblMakanan.addColumn("Harga");
-    tblMakanan.addColumn("StokTerjual/Bulan");
-    makanan1.setModel(tblMakanan);
-    makanan1.getTableHeader().setBackground(new Color(115,206,191));
-    makanan1.getTableHeader().setForeground(new Color(0,0,0));
-    try {
-        Statement st = konek.GetConnection().createStatement();
-        ResultSet rs = st.executeQuery("SELECT m.nama_menu, m.harga, SUM(dt.jumlah) AS total_terjual " +
-                                       "FROM menu m " +
-                                       "LEFT JOIN detail_transaksi dt ON m.kode_menu = dt.kode_menu " +
-                                       "JOIN transaksi t ON dt.kode_transaksi = t.kode_transaksi " +
-                                       "WHERE m.kode_menu LIKE '%MA%' " +
-                                       "AND t.tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) " +
-                                       "GROUP BY m.nama_menu");
-        while (rs.next()) {
-            tblMakanan.addRow(new Object[]{
-                rs.getString("nama_menu"),
-                rs.getString("harga"),
-                rs.getString("total_terjual")
-            });
-        }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
-    }
-    return defaultDataset;
-}
-public DefaultCategoryDataset minuman() {
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    DefaultTableModel tblMinuman = new DefaultTableModel();
-    tblMinuman.addColumn("Minuman");
-    tblMinuman.addColumn("Harga");
-    tblMinuman.addColumn("StokTerjual/Bulan");
-    minuman1.setModel(tblMinuman);
-    minuman1.getTableHeader().setBackground(new Color(115,206,191));
-    minuman1.getTableHeader().setForeground(new Color(0,0,0));
-    try {
-        Statement st = konek.GetConnection().createStatement();
-        ResultSet rs = st.executeQuery("SELECT m.nama_menu, m.harga, SUM(dt.jumlah) AS total_terjual " +
-                                       "FROM menu m " +
-                                       "LEFT JOIN detail_transaksi dt ON m.kode_menu = dt.kode_menu " +
-                                       "JOIN transaksi t ON dt.kode_transaksi = t.kode_transaksi " +
-                                       "WHERE m.kode_menu LIKE '%MI%' " +
-                                       "AND t.tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) " +
-                                       "GROUP BY m.nama_menu");
-        while(rs.next()){
-            tblMinuman.addRow(new Object[]{
-                    rs.getString("nama_menu"),
-                    rs.getString("harga"),
-                    rs.getString("total_terjual")
-            });
-            dataset.addValue(rs.getDouble("total_terjual"), "Minuman", rs.getString("nama_menu"));
-        }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
-    }
-    return dataset;
-
-    }
- private String topSellerInfo(ResultSet rs) throws SQLException {
-    StringBuilder sb = new StringBuilder();
-    sb.append("Top 3 Menu Terlaris:\n");
-    int rank = 1;
-    while (rs.next()) {
-        String namaMenu = rs.getString("nama_menu");
-        int totalTerjual = rs.getInt("total_terjual");
-        sb.append(rank).append(". ").append(namaMenu).append(" - ").append(totalTerjual).append(" terjual\n");
-        rank++;
-    }
-    return sb.toString();
-}
-
-private void tampilkanTopSellerMakanan() {
-   try {
-    String queryTopSellerMakanan = "SELECT m.nama_menu, SUM(dt.jumlah) AS total_terjual FROM menu m "
-            + "LEFT JOIN detail_transaksi dt ON m.kode_menu = dt.kode_menu AND m.kode_menu LIKE 'MA%' "
-            + "JOIN transaksi t ON dt.kode_transaksi = t.kode_transaksi WHERE t.tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) "
-            + "GROUP BY m.nama_menu ORDER BY total_terjual DESC LIMIT 3;";
-
-    PreparedStatement psTopSeller = konek.GetConnection().prepareStatement(queryTopSellerMakanan);
-    ResultSet rsTopSeller = psTopSeller.executeQuery();
-
-    String topSellerText = "";
-    while (rsTopSeller.next()) {
-        String namaMenu = rsTopSeller.getString("nama_menu");
-        int totalTerjual = rsTopSeller.getInt("total_terjual");
-        topSellerText +=  "<html>" +  namaMenu + " : " + totalTerjual + " terjual <br/>";
-    }
-
-    bestSeller3makanan1.setText(topSellerText);
-
-    rsTopSeller.close();
-    psTopSeller.close();
-
-} catch (SQLException e) {
-    e.printStackTrace();
-}
-   
-}
     private void tampilkanTopSellerMinuman() {
     try { 
         String queryTopSellerMinuman = "SELECT m.nama_menu, SUM(dt.jumlah) AS total_terjual FROM menu m LEFT "
@@ -279,7 +252,6 @@ private void tampilkanTopSellerMakanan() {
         bestSeller3minuman = new javax.swing.JLabel();
         bestSeller3makanan = new javax.swing.JLabel();
         background1 = new com.swing.background();
-        GrafikGaris1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         makanan1 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -290,6 +262,7 @@ private void tampilkanTopSellerMakanan() {
         shape2 = new com.swing.Shape();
         bestSeller3makanan1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        chart1 = new com.grafik.Chart();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Makanan");
@@ -330,8 +303,6 @@ private void tampilkanTopSellerMakanan() {
         bestSeller3makanan.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
 
         setLayout(new java.awt.BorderLayout());
-
-        GrafikGaris1.setBackground(new java.awt.Color(255, 255, 255));
 
         makanan1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         makanan1.setModel(new javax.swing.table.DefaultTableModel(
@@ -431,9 +402,9 @@ private void tampilkanTopSellerMakanan() {
         background1Layout.setHorizontalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(background1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(GrafikGaris1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(20, 20, 20)
+                .addComponent(chart1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(shape2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(shape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -455,9 +426,9 @@ private void tampilkanTopSellerMakanan() {
                         .addGap(18, 18, 18)
                         .addComponent(shape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(background1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(GrafikGaris1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(217, Short.MAX_VALUE))
+                        .addGap(14, 14, 14)
+                        .addComponent(chart1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(222, Short.MAX_VALUE))
             .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(background1Layout.createSequentialGroup()
                     .addContainerGap(352, Short.MAX_VALUE)
@@ -473,12 +444,12 @@ private void tampilkanTopSellerMakanan() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GrafikGaris;
-    private javax.swing.JPanel GrafikGaris1;
     private com.swing.background background1;
     private javax.swing.JLabel bestSeller3makanan;
     private javax.swing.JLabel bestSeller3makanan1;
     private javax.swing.JLabel bestSeller3minuman;
     private javax.swing.JLabel bestSeller3minuman1;
+    private com.grafik.Chart chart1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

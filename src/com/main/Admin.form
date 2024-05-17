@@ -99,11 +99,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="pictureBox5" pref="41" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="pictureBox1" alignment="1" pref="41" max="32767" attributes="0"/>
-                                  <Component id="pictureBox2" alignment="1" pref="41" max="32767" attributes="0"/>
-                                  <Component id="pictureBox3" alignment="1" pref="41" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="pictureBox1" alignment="1" pref="41" max="32767" attributes="0"/>
+                              <Component id="pictureBox2" alignment="1" pref="41" max="32767" attributes="0"/>
+                              <Component id="pictureBox3" alignment="1" pref="41" max="32767" attributes="0"/>
                               <Component id="pictureBox4" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="31" max="32767" attributes="0"/>

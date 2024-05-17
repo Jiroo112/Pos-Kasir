@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import koneksi.konek;
 import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.BorderFactory;
+import javax.swing.JTextField;
 
 public class Keuntungan extends javax.swing.JPanel {
 
@@ -34,8 +35,8 @@ public class Keuntungan extends javax.swing.JPanel {
         data_table_belanja();
         tanggalAwal = new Date();
         tanggalAkhir = new Date();
-    }
-
+       }
+   
    
      public void data_table() {
     DefaultTableModel tbl = new DefaultTableModel();
@@ -62,7 +63,8 @@ public class Keuntungan extends javax.swing.JPanel {
 } catch (Exception e) {
     
 }
- }
+     }
+
  public void data_table_belanja() {
     DefaultTableModel tblB = new DefaultTableModel();
     tblB.addColumn("Tanggal");
@@ -126,77 +128,31 @@ public class Keuntungan extends javax.swing.JPanel {
     }
     return nilaiTotal;
 }
-    
+public JTextField getTotaluntungField() {
+    return totaluntungField;
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         background1 = new com.swing.background();
-        date2 = new com.toedter.calendar.JDateChooser();
-        date1 = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         totaluntungField = new javax.swing.JTextField();
-        ButtonHitung = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Ttabel = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         belanjatabel = new javax.swing.JTable();
+        title = new javax.swing.JLabel();
+        body = new javax.swing.JLabel();
+        tanggalbt = new com.button.Fbutton();
+        title1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
         background1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        date2.setBackground(new java.awt.Color(204, 204, 204));
-        date2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        date2.setAutoscrolls(true);
-        date2.setDateFormatString("yyyy-MM- dd");
-        date2.setFocusCycleRoot(true);
-        date2.setFocusable(false);
-        date2.setOpaque(false);
-        background1.add(date2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 400, 30));
-
-        date1.setBackground(new java.awt.Color(204, 204, 204));
-        date1.setDateFormatString("yyyy-MM- dd");
-        date1.setFocusCycleRoot(true);
-        date1.setFocusable(false);
-        date1.setOpaque(false);
-        background1.add(date1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 410, 30));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Perhitungan Keuntungan");
-        background1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel4.setText("Dari Tanggal");
-        background1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 88, 110, 30));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel3.setText("Sampai Tanggal");
-        background1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 140, 30));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel6.setText("Keuntungan");
-        background1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 160, -1));
-
         totaluntungField.setBackground(new java.awt.Color(204, 255, 204));
         totaluntungField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         background1.add(totaluntungField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 510, 30));
-
-        ButtonHitung.setText("hitung");
-        ButtonHitung.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ButtonHitungMouseClicked(evt);
-            }
-        });
-        ButtonHitung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonHitungActionPerformed(evt);
-            }
-        });
-        background1.add(ButtonHitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 100, 30));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -217,7 +173,7 @@ public class Keuntungan extends javax.swing.JPanel {
         Ttabel.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(Ttabel);
 
-        background1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 166, 507, 250));
+        background1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 507, 250));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -239,149 +195,55 @@ public class Keuntungan extends javax.swing.JPanel {
         belanjatabel.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(belanjatabel);
 
-        background1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 164, 500, 250));
+        background1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 510, 250));
+
+        title.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(0, 153, 153));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Keuntungan : ");
+        title.setToolTipText("");
+        background1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+
+        body.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        body.setForeground(new java.awt.Color(0, 153, 153));
+        body.setText("Menghitung Keuntungan Berdasarkan Tanggal yang Dipilih");
+        background1.add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        tanggalbt.setText("Pilih Tanggal");
+        tanggalbt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanggalbtActionPerformed(evt);
+            }
+        });
+        background1.add(tanggalbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 40));
+
+        title1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        title1.setForeground(new java.awt.Color(0, 153, 153));
+        title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title1.setText("Keuntungan");
+        title1.setToolTipText("");
+        background1.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         add(background1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHitungActionPerformed
-        String tanggalPattern = "yyyy-MM-dd";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(tanggalPattern);
-
-        String tanggal1 = dateFormat.format(date1.getDate());
-        String tanggal2 = dateFormat.format(date2.getDate());
-
-        try {
-            String queryTransaksi = "SELECT tgl_transaksi, kode_transaksi, total "
-            + "FROM transaksi WHERE tgl_transaksi BETWEEN ? AND ? order by tgl_transaksi asc";
-            PreparedStatement statementTransaksi = konek.GetConnection().prepareStatement(queryTransaksi);
-            statementTransaksi.setString(1, tanggal1);
-            statementTransaksi.setString(2, tanggal2);
-
-            ResultSet resTransaksi = statementTransaksi.executeQuery();
-
-            DefaultTableModel tblTransaksi = new DefaultTableModel();
-            tblTransaksi.addColumn("Tanggal");
-            tblTransaksi.addColumn("Kode Transaksi");
-            tblTransaksi.addColumn("Pemasukan");
-
-            while (resTransaksi.next()) {
-                tblTransaksi.addRow(new Object[]{
-                    resTransaksi.getDate("tgl_transaksi"),
-                    resTransaksi.getString("kode_transaksi"),
-                    resTransaksi.getInt("total")
-                });
-            }
-            String queryBelanja = "SELECT tanggal, total, keterangan "
-            + "FROM belanja WHERE tanggal BETWEEN ? AND ? order by tanggal asc";
-            PreparedStatement statementBelanja = konek.GetConnection().prepareStatement(queryBelanja);
-            statementBelanja.setString(1, tanggal1);
-            statementBelanja.setString(2, tanggal2);
-
-            ResultSet resBelanja = statementBelanja.executeQuery();
-
-            DefaultTableModel tblBelanja = new DefaultTableModel();
-            tblBelanja.addColumn("Tanggal");
-            tblBelanja.addColumn("Total Belanja");
-            tblBelanja.addColumn("Keterangan");
-
-            while (resBelanja.next()) {
-                tblBelanja.addRow(new Object[]{
-                    resBelanja.getDate("tanggal"),
-                    resBelanja.getInt("total"),
-                    resBelanja.getString("keterangan")
-                });
-            }
-            Ttabel.setModel(tblTransaksi);
-            belanjatabel.setModel(tblBelanja);
-
-            double modal = modal(tanggal1, tanggal2);
-            double transaksi = transaksi(tanggal1, tanggal2);
-            double keuntungan = transaksi - modal;
-            totaluntungField.setText(String.valueOf(keuntungan));
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_ButtonHitungActionPerformed
-
-    private void ButtonHitungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonHitungMouseClicked
-        String tanggalPattern = "yyyy-MM-dd";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(tanggalPattern);
-
-        String tanggal1 = dateFormat.format(date1.getDate());
-        String tanggal2 = dateFormat.format(date2.getDate());
-
-        try {
-            String queryTransaksi = "SELECT tgl_transaksi, kode_transaksi, total "
-            + "FROM transaksi WHERE tgl_transaksi BETWEEN ? AND ? order by tgl_transaksi asc";
-            PreparedStatement statementTransaksi = konek.GetConnection().prepareStatement(queryTransaksi);
-            statementTransaksi.setString(1, tanggal1);
-            statementTransaksi.setString(2, tanggal2);
-
-            ResultSet resTransaksi = statementTransaksi.executeQuery();
-
-            DefaultTableModel tblTransaksi = new DefaultTableModel();
-            tblTransaksi.addColumn("Tanggal");
-            tblTransaksi.addColumn("Kode Transaksi");
-            tblTransaksi.addColumn("Pemasukan");
-
-            while (resTransaksi.next()) {
-                tblTransaksi.addRow(new Object[]{
-                    resTransaksi.getDate("tgl_transaksi"),
-                    resTransaksi.getString("kode_transaksi"),
-                    resTransaksi.getInt("total")
-                });
-            }
-            String queryBelanja = "SELECT tanggal, total, keterangan "
-            + "FROM belanja WHERE tanggal BETWEEN ? AND ? order by tanggal asc";
-            PreparedStatement statementBelanja = konek.GetConnection().prepareStatement(queryBelanja);
-            statementBelanja.setString(1, tanggal1);
-            statementBelanja.setString(2, tanggal2);
-
-            ResultSet resBelanja = statementBelanja.executeQuery();
-
-            DefaultTableModel tblBelanja = new DefaultTableModel();
-            tblBelanja.addColumn("Tanggal");
-            tblBelanja.addColumn("Total Belanja");
-            tblBelanja.addColumn("Keterangan");
-
-            while (resBelanja.next()) {
-                tblBelanja.addRow(new Object[]{
-                    resBelanja.getDate("tanggal"),
-                    resBelanja.getInt("total"),
-                    resBelanja.getString("keterangan")
-                });
-            }
-            Ttabel.setModel(tblTransaksi);
-            belanjatabel.setModel(tblBelanja);
-
-            double modal = modal(tanggal1, tanggal2);
-            double transaksi = transaksi(tanggal1, tanggal2);
-            double keuntungan = transaksi - modal;
-            totaluntungField.setText(String.valueOf(keuntungan));
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_ButtonHitungMouseClicked
+    private void tanggalbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggalbtActionPerformed
+   pilihTanggal framePilihTanggal = new pilihTanggal(this);
+    framePilihTanggal.setVisible(true);
+    }//GEN-LAST:event_tanggalbtActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonHitung;
-    private javax.swing.JTable Ttabel;
+    public javax.swing.JTable Ttabel;
     private com.swing.background background1;
-    private javax.swing.JTable belanjatabel;
-    private com.toedter.calendar.JDateChooser date1;
-    private com.toedter.calendar.JDateChooser date2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    public javax.swing.JTable belanjatabel;
+    private javax.swing.JLabel body;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField totaluntungField;
+    private com.button.Fbutton tanggalbt;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel title1;
+    public javax.swing.JTextField totaluntungField;
     // End of variables declaration//GEN-END:variables
+
 }

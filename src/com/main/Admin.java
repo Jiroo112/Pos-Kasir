@@ -311,7 +311,8 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pictureBox3MouseExited
 
     private void pictureBox4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox4MouseClicked
-        // TODO add your handling code here:
+        showForm(grafik);
+        grafik.updateChart();
     }//GEN-LAST:event_pictureBox4MouseClicked
 
     private void pictureBox4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox4MouseEntered
@@ -323,7 +324,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pictureBox4MouseExited
 
     private void pictureBox5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox5MouseClicked
-        // TODO add your handling code here:
+        showForm(keuntungan);
     }//GEN-LAST:event_pictureBox5MouseClicked
 
     private void pictureBox5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox5MouseEntered
