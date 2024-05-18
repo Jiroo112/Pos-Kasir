@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/com/grafik/Chart.java</file>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/koneksi/konek.java</file>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/com/panel/Keuntungan.java</file>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/com/panel/lupaterus.java</file>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/com/panel/pilihTanggal.java</file>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/com/panel/GrafikBaru.java</file>
-            <file>file:/C:/Users/Ferdi/Desktop/Pos-Kasir-main/src/com/main/Admin.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/UTBK2024/Pos-Kasir/src/com/main/editBelanja.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/UTBK2024/Pos-Kasir/src/com/main/Admin.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/UTBK2024/Pos-Kasir/src/com/main/Karyawan.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/UTBK2024/Pos-Kasir/src/com/panel/pilihTanggal.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/UTBK2024/Pos-Kasir/src/com/panel/belanja.java</file>
         </group>
     </open-files>
 </project-private>

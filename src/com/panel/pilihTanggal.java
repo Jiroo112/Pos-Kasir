@@ -23,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import java.sql.PreparedStatement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -86,14 +87,19 @@ private Keuntungan keuntunganPanel;
         } catch (Exception e) {
         }
     }
-        public double modal(String tanggal1, String tanggal2) {
+        public double modal()throws ParseException {
     double nilaiModal = 0.0;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String tanggalAwal = date1.getText();
+    String tanggalAkhir = date2.getText();
     try {
+        Date dateSatu = dateFormat.parse(tanggalAwal);
+        Date dateDua = dateFormat.parse(tanggalAkhir);
         String query = "SELECT SUM(belanja.total) AS total_belanja FROM belanja WHERE tanggal BETWEEN ? AND ?";
         PreparedStatement preparedStatement = konek.GetConnection().prepareStatement(query);
 
-        preparedStatement.setString(1, tanggal1);
-        preparedStatement.setString(2, tanggal2);
+        preparedStatement.setString(1, tanggalAwal);
+        preparedStatement.setString(2, tanggalAkhir);
 
         ResultSet res = preparedStatement.executeQuery();
 
@@ -106,14 +112,19 @@ private Keuntungan keuntunganPanel;
     return nilaiModal;
 }
 
-public double transaksi(String tanggal1, String tanggal2) {
+public double transaksi() throws ParseException {
     double nilaiTotal = 0.0;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String tanggalAwal = date1.getText();
+    String tanggalAkhir = date2.getText();
     try {
+        Date dateSatu = dateFormat.parse(tanggalAwal);
+        Date dateDua = dateFormat.parse(tanggalAkhir);
         String query = "SELECT SUM(transaksi.total) AS total_transaksi FROM transaksi WHERE tgl_transaksi BETWEEN ? AND ?";
         PreparedStatement preparedStatement = konek.GetConnection().prepareStatement(query);
 
-        preparedStatement.setString(1, tanggal1);
-        preparedStatement.setString(2, tanggal2);
+        preparedStatement.setString(1, tanggalAwal);
+        preparedStatement.setString(2, tanggalAkhir);
 
         ResultSet res = preparedStatement.executeQuery();
 
@@ -140,11 +151,18 @@ public double transaksi(String tanggal1, String tanggal2) {
 
         shape2 = new com.swing.Shape();
         background1 = new com.swing.background();
-        date1 = new com.toedter.calendar.JDateChooser();
-        date2 = new com.toedter.calendar.JDateChooser();
         title = new javax.swing.JLabel();
         body = new javax.swing.JLabel();
         hitungbt = new com.button.Fbutton();
+        shape1 = new com.swing.Shape();
+        date1 = new javax.swing.JTextField();
+        dateChooser1 = new com.raven.datechooser.DateChooser();
+        dateChooser2 = new com.raven.datechooser.DateChooser();
+        shape3 = new com.swing.Shape();
+        date2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        batal = new com.button.Fbutton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -157,29 +175,20 @@ public double transaksi(String tanggal1, String tanggal2) {
             }
         });
 
-        date1.setBackground(new java.awt.Color(204, 204, 204));
-        date1.setDateFormatString("yyyy-MM- dd");
-        date1.setFocusCycleRoot(true);
-        date1.setFocusable(false);
-        date1.setOpaque(false);
-
-        date2.setBackground(new java.awt.Color(204, 204, 204));
-        date2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        date2.setAutoscrolls(true);
-        date2.setDateFormatString("yyyy-MM- dd");
-        date2.setFocusCycleRoot(true);
-        date2.setFocusable(false);
-        date2.setOpaque(false);
+        background1.setBackground(new java.awt.Color(122, 178, 178));
+        background1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         title.setForeground(new java.awt.Color(0, 153, 153));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Pilih Tanggal");
         title.setToolTipText("");
+        background1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
 
         body.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         body.setForeground(new java.awt.Color(0, 153, 153));
         body.setText("Untuk Menghitung Keuntungan yang Telah Didapat!");
+        background1.add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 60, -1, -1));
 
         hitungbt.setText("Hitung");
         hitungbt.addActionListener(new java.awt.event.ActionListener() {
@@ -187,45 +196,54 @@ public double transaksi(String tanggal1, String tanggal2) {
                 hitungbtActionPerformed(evt);
             }
         });
+        background1.add(hitungbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 100, 37));
 
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(body)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(title)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(date1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
-            .addGroup(background1Layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(hitungbt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(background1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(body)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(date1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(hitungbt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-        );
+        shape1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        date1.setBackground(new java.awt.Color(0, 167, 157));
+        date1.setForeground(new java.awt.Color(255, 255, 255));
+        date1.setBorder(null);
+        shape1.add(date1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 220, 30));
+
+        background1.add(shape1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, 30));
+
+        dateChooser1.setForeground(new java.awt.Color(122, 178, 178));
+        dateChooser1.setDateFormat("yyyy-MM-dd");
+        dateChooser1.setTextRefernce(date1);
+        background1.add(dateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        dateChooser2.setForeground(new java.awt.Color(122, 178, 178));
+        dateChooser2.setDateFormat("yyyy-MM-dd");
+        background1.add(dateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+
+        shape3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        date2.setBackground(new java.awt.Color(0, 167, 157));
+        date2.setForeground(new java.awt.Color(255, 255, 255));
+        date2.setBorder(null);
+        shape3.add(date2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 220, 30));
+
+        background1.add(shape3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 260, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Sampai Tanggal");
+        background1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 90, 250, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Dari Tanggal");
+        background1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 90, 250, -1));
+
+        batal.setText("Batal");
+        batal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                batalMouseClicked(evt);
+            }
+        });
+        background1.add(batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 100, 40));
 
         javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
         shape2.setLayout(shape2Layout);
@@ -233,14 +251,14 @@ public double transaksi(String tanggal1, String tanggal2) {
             shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addContainerGap())
         );
         shape2Layout.setVerticalGroup(
             shape2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(background1, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -248,11 +266,11 @@ public double transaksi(String tanggal1, String tanggal2) {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(shape2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(shape2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(shape2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -268,8 +286,8 @@ public double transaksi(String tanggal1, String tanggal2) {
     }//GEN-LAST:event_formWindowActivated
 
     private void hitungbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungbtActionPerformed
-  Date tanggalAwal = date1.getDate();
-    Date tanggalAkhir = date2.getDate();
+      String tanggalAwal = date1.getText();
+      String tanggalAkhir = date2.getText();
 
     if (tanggalAwal == null || tanggalAkhir == null) {
     JOptionPane.showMessageDialog(this, "Pilih tanggal terlebih dahulu", "Peringatan", JOptionPane.WARNING_MESSAGE);
@@ -277,18 +295,19 @@ public double transaksi(String tanggal1, String tanggal2) {
 }
     // Format tanggal sesuai dengan database
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    String tanggal1 = dateFormat.format(tanggalAwal);
-    String tanggal2 = dateFormat.format(tanggalAkhir);
+
 
     // Mengambil data transaksi dari database
     DefaultTableModel tbl = (DefaultTableModel) keuntunganPanel.Ttabel.getModel();
     tbl.setRowCount(0); // Menghapus semua baris yang ada
 
     try {
+        Date dateSatu = dateFormat.parse(tanggalAwal);
+        Date dateDua = dateFormat.parse(tanggalAkhir);
         Statement statement = konek.GetConnection().createStatement();
         ResultSet res = statement.executeQuery(
             "SELECT transaksi.tgl_transaksi, transaksi.kode_transaksi, transaksi.total " +
-            "FROM transaksi WHERE tgl_transaksi BETWEEN '" + tanggal1 + "' AND '" + tanggal2 + "' " +
+            "FROM transaksi WHERE tgl_transaksi BETWEEN '" + new java.sql.Date(dateSatu.getTime()) + "' AND '" + new java.sql.Date(dateDua.getTime()) + "' " +
             "ORDER BY tgl_transaksi ASC");
 
         while (res.next()) {
@@ -300,6 +319,8 @@ public double transaksi(String tanggal1, String tanggal2) {
         }
     } catch (SQLException e) {
         e.printStackTrace();
+    } catch (ParseException ex) {
+        Logger.getLogger(pilihTanggal.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     // Mengambil data belanja dari database
@@ -307,10 +328,12 @@ public double transaksi(String tanggal1, String tanggal2) {
     tblB.setRowCount(0); // Menghapus semua baris yang ada
 
     try {
+        Date dateSatu = dateFormat.parse(tanggalAwal);
+        Date dateDua = dateFormat.parse(tanggalAkhir);
         Statement statement = konek.GetConnection().createStatement();
         ResultSet res = statement.executeQuery(
             "SELECT belanja.tanggal, belanja.total, belanja.keterangan " +
-            "FROM belanja WHERE tanggal BETWEEN '" + tanggal1 + "' AND '" + tanggal2 + "' " +
+            "FROM belanja WHERE tanggal BETWEEN '" + new java.sql.Date(dateSatu.getTime()) + "' AND '" + new java.sql.Date(dateDua.getTime()) + "' " +
             "ORDER BY tanggal ASC");
 
         while (res.next()) {
@@ -322,17 +345,29 @@ public double transaksi(String tanggal1, String tanggal2) {
         }
     } catch (SQLException e) {
         e.printStackTrace();
+    } catch (ParseException ex) {
+        Logger.getLogger(pilihTanggal.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     // Menghitung dan menampilkan keuntungan
-    double modal = modal(tanggal1, tanggal2);
-    double transaksi = transaksi(tanggal1, tanggal2);
+    try{
+    double modal = modal();
+    double transaksi = transaksi();
     double keuntungan = transaksi - modal;
     keuntunganPanel.getTotaluntungField().setText(String.valueOf(keuntungan));
     
     // Menutup jendela pilihTanggal
+    
+    }catch(ParseException e){
+        e.printStackTrace();
+    }
     dispose();
     }//GEN-LAST:event_hitungbtActionPerformed
+
+    private void batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_batalMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_batalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -378,11 +413,18 @@ public double transaksi(String tanggal1, String tanggal2) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.swing.background background1;
+    private com.button.Fbutton batal;
     private javax.swing.JLabel body;
-    private com.toedter.calendar.JDateChooser date1;
-    private com.toedter.calendar.JDateChooser date2;
+    private javax.swing.JTextField date1;
+    private javax.swing.JTextField date2;
+    private com.raven.datechooser.DateChooser dateChooser1;
+    private com.raven.datechooser.DateChooser dateChooser2;
     private com.button.Fbutton hitungbt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private com.swing.Shape shape1;
     private com.swing.Shape shape2;
+    private com.swing.Shape shape3;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

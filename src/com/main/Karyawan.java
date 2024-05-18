@@ -1,6 +1,7 @@
 package com.main;
 
 import com.panel.Transaksi;
+import com.panel.riwayat;
 import com.swing.ModelItem;
 import com.swing.modelDetail;
 import java.awt.BorderLayout;
@@ -18,6 +19,8 @@ public class Karyawan extends javax.swing.JFrame {
     
     private Transaksi main;
     private popUp_bayar bayar;
+    private riwayat riwayat_transaksi;
+    private tanggal_riwayat tanggal;
 
     public String getData() {
         return data;
@@ -44,7 +47,7 @@ public class Karyawan extends javax.swing.JFrame {
        main = new Transaksi();
        mainPanel.setLayout(new BorderLayout());
        mainPanel.add(main);
-       
+       riwayat_transaksi = new riwayat();
     }
     
     public void showForm(Component com){
@@ -136,6 +139,7 @@ public class Karyawan extends javax.swing.JFrame {
         Dasboard = new javax.swing.JPanel();
         shape41 = new com.swing.Shape4();
         pictureBox1 = new com.swing.PictureBox();
+        riwayat = new com.swing.PictureBox();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
         mainPanel = new com.swing.MainPanel();
@@ -179,19 +183,30 @@ public class Karyawan extends javax.swing.JFrame {
             }
         });
 
+        riwayat.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/(2)riwayat.png"))); // NOI18N
+        riwayat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                riwayatMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout shape41Layout = new javax.swing.GroupLayout(shape41);
         shape41.setLayout(shape41Layout);
         shape41Layout.setHorizontalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
-                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(riwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         shape41Layout.setVerticalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(riwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -308,6 +323,11 @@ public class Karyawan extends javax.swing.JFrame {
         System.out.println("switch");
     }//GEN-LAST:event_pictureBox1MouseClicked
 
+    private void riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_riwayatMouseClicked
+        // TODO add your handling code here:
+        showForm(riwayat_transaksi);
+    }//GEN-LAST:event_riwayatMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -350,6 +370,7 @@ public class Karyawan extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private com.swing.MainPanel mainPanel;
     private com.swing.PictureBox pictureBox1;
+    private com.swing.PictureBox riwayat;
     private com.swing.Shape4 shape41;
     private com.button.Tampilan tampilan1;
     // End of variables declaration//GEN-END:variables

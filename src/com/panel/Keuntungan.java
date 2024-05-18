@@ -128,6 +128,11 @@ public class Keuntungan extends javax.swing.JPanel {
     }
     return nilaiTotal;
 }
+ public void totalKeuntungan(){
+    double keuntungan = transaksi - modal;
+    totaluntungField.setText("Rp " +keuntungan +",00");
+ }
+    
 public JTextField getTotaluntungField() {
     return totaluntungField;
 }
@@ -136,7 +141,6 @@ public JTextField getTotaluntungField() {
     private void initComponents() {
 
         background1 = new com.swing.background();
-        totaluntungField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Ttabel = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -145,14 +149,13 @@ public JTextField getTotaluntungField() {
         body = new javax.swing.JLabel();
         tanggalbt = new com.button.Fbutton();
         title1 = new javax.swing.JLabel();
+        reload = new com.button.button();
+        shape1 = new com.swing.Shape();
+        totaluntungField = new javax.swing.JTextField();
 
         setLayout(new java.awt.CardLayout());
 
         background1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        totaluntungField.setBackground(new java.awt.Color(204, 255, 204));
-        totaluntungField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        background1.add(totaluntungField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 510, 30));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -197,25 +200,26 @@ public JTextField getTotaluntungField() {
 
         background1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 510, 250));
 
-        title.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         title.setForeground(new java.awt.Color(0, 153, 153));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Keuntungan : ");
         title.setToolTipText("");
-        background1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+        background1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, -1, -1));
 
         body.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         body.setForeground(new java.awt.Color(0, 153, 153));
         body.setText("Menghitung Keuntungan Berdasarkan Tanggal yang Dipilih");
         background1.add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        tanggalbt.setText("Pilih Tanggal");
+        tanggalbt.setText("Tanggal");
+        tanggalbt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tanggalbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tanggalbtActionPerformed(evt);
             }
         });
-        background1.add(tanggalbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 40));
+        background1.add(tanggalbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 110, 40));
 
         title1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         title1.setForeground(new java.awt.Color(0, 153, 153));
@@ -224,6 +228,25 @@ public JTextField getTotaluntungField() {
         title1.setToolTipText("");
         background1.add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
+        reload.setBackground(new java.awt.Color(0, 167, 157));
+        reload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/picture/reload.png"))); // NOI18N
+        reload.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reloadMouseClicked(evt);
+            }
+        });
+        background1.add(reload, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 50, 40));
+
+        shape1.setForeground(new java.awt.Color(255, 255, 255));
+        shape1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        totaluntungField.setBackground(new java.awt.Color(0, 167, 157));
+        totaluntungField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        totaluntungField.setBorder(null);
+        shape1.add(totaluntungField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 510, 30));
+
+        background1.add(shape1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 550, 30));
+
         add(background1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,6 +254,13 @@ public JTextField getTotaluntungField() {
    pilihTanggal framePilihTanggal = new pilihTanggal(this);
     framePilihTanggal.setVisible(true);
     }//GEN-LAST:event_tanggalbtActionPerformed
+
+    private void reloadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reloadMouseClicked
+        // TODO add your handling code here:
+        data_table();
+        data_table_belanja();
+        totalKeuntungan();
+    }//GEN-LAST:event_reloadMouseClicked
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -240,6 +270,8 @@ public JTextField getTotaluntungField() {
     private javax.swing.JLabel body;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.button.button reload;
+    private com.swing.Shape shape1;
     private com.button.Fbutton tanggalbt;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;

@@ -8,6 +8,7 @@ import com.panel.editt;
 import com.panel.Registrasi;
 import com.panel.tambahmenu;
 import com.panel.DataKaryawan;
+import com.panel.belanja;
 import com.panel.data_menu;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,12 +25,13 @@ public class Admin extends javax.swing.JFrame {
 
     private data_menu damen;
     private Keuntungan keuntungan;
-    private GrafikBaru grafik;
+   // private GrafikBaru grafik;
     private editt edit;
     private tambahmenu tambah;
     private Greeting greet;
     private Registrasi regist;
     private DataKaryawan daker;
+    private belanja belanja_harian;
     public Admin() {
        initComponents();
         setBackground(new Color(0, 0, 0, 0));
@@ -39,12 +41,13 @@ public class Admin extends javax.swing.JFrame {
   public void init(){
        damen = new data_menu();
        keuntungan = new Keuntungan();
-       grafik = new GrafikBaru();
+       //grafik = new GrafikBaru();
        edit = new editt();
        tambah = new tambahmenu();
        greet = new Greeting();
        regist = new Registrasi();
        daker = new DataKaryawan();
+       belanja_harian = new belanja();
        
        mainPanel.setLayout(new BorderLayout());
        mainPanel.add(greet);
@@ -72,6 +75,7 @@ public class Admin extends javax.swing.JFrame {
         pictureBox3 = new com.swing.PictureBox();
         pictureBox4 = new com.swing.PictureBox();
         pictureBox5 = new com.swing.PictureBox();
+        belanja = new com.swing.PictureBox();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
 
@@ -150,33 +154,43 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        belanja.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/Belanja (2).png"))); // NOI18N
+        belanja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                belanjaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout shape41Layout = new javax.swing.GroupLayout(shape41);
         shape41.setLayout(shape41Layout);
         shape41Layout.setHorizontalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pictureBox5, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(pictureBox5, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                         .addComponent(pictureBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                         .addComponent(pictureBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(pictureBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
-                    .addComponent(pictureBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pictureBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                        .addComponent(pictureBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         shape41Layout.setVerticalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(25, 25, 25)
                 .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(pictureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(pictureBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(pictureBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pictureBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -192,7 +206,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DasboardLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(shape41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                .addGap(74, 74, 74))
         );
 
         Header.setOpaque(false);
@@ -311,8 +325,8 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pictureBox3MouseExited
 
     private void pictureBox4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox4MouseClicked
-        showForm(grafik);
-        grafik.updateChart();
+        //showForm(grafik);
+        //grafik.updateChart();
     }//GEN-LAST:event_pictureBox4MouseClicked
 
     private void pictureBox4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox4MouseEntered
@@ -334,6 +348,11 @@ public class Admin extends javax.swing.JFrame {
     private void pictureBox5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox5MouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_pictureBox5MouseExited
+
+    private void belanjaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_belanjaMouseClicked
+        // TODO add your handling code here:
+        showForm(belanja_harian);
+    }//GEN-LAST:event_belanjaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -374,6 +393,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel Dasboard;
     private javax.swing.JPanel Header;
     private com.swing.background background1;
+    private com.swing.PictureBox belanja;
     public static final com.swing.MainPanel mainPanel = new com.swing.MainPanel();
     private com.swing.PictureBox pictureBox1;
     private com.swing.PictureBox pictureBox2;
