@@ -140,6 +140,7 @@ public class Karyawan extends javax.swing.JFrame {
         shape41 = new com.swing.Shape4();
         pictureBox1 = new com.swing.PictureBox();
         riwayat = new com.swing.PictureBox();
+        logout = new com.swing.PictureBox();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
         mainPanel = new com.swing.MainPanel();
@@ -190,6 +191,13 @@ public class Karyawan extends javax.swing.JFrame {
             }
         });
 
+        logout.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/logout.png"))); // NOI18N
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout shape41Layout = new javax.swing.GroupLayout(shape41);
         shape41.setLayout(shape41Layout);
         shape41Layout.setHorizontalGroup(
@@ -199,14 +207,20 @@ public class Karyawan extends javax.swing.JFrame {
                     .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(riwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 20, Short.MAX_VALUE))
+            .addGroup(shape41Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         shape41Layout.setVerticalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(38, 38, 38)
                 .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(26, 26, 26)
                 .addComponent(riwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -328,6 +342,18 @@ public class Karyawan extends javax.swing.JFrame {
         showForm(riwayat_transaksi);
     }//GEN-LAST:event_riwayatMouseClicked
 
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin keluar?");
+        if (result == JOptionPane.YES_OPTION) {
+            login log = new login();
+            log.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Batal keluar");
+        }
+    }//GEN-LAST:event_logoutMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -368,6 +394,7 @@ public class Karyawan extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private com.swing.background background1;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private com.swing.PictureBox logout;
     private com.swing.MainPanel mainPanel;
     private com.swing.PictureBox pictureBox1;
     private com.swing.PictureBox riwayat;

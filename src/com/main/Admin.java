@@ -16,6 +16,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.io.File;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,12 +71,12 @@ public class Admin extends javax.swing.JFrame {
         background1 = new com.swing.background();
         Dasboard = new javax.swing.JPanel();
         shape41 = new com.swing.Shape4();
-        pictureBox1 = new com.swing.PictureBox();
         pictureBox2 = new com.swing.PictureBox();
         pictureBox3 = new com.swing.PictureBox();
         pictureBox4 = new com.swing.PictureBox();
         pictureBox5 = new com.swing.PictureBox();
         belanja = new com.swing.PictureBox();
+        logout = new com.swing.PictureBox();
         Header = new javax.swing.JPanel();
         tampilan1 = new com.button.Tampilan();
 
@@ -88,19 +89,6 @@ public class Admin extends javax.swing.JFrame {
         });
 
         Dasboard.setOpaque(false);
-
-        pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/Home [6499DE3].png"))); // NOI18N
-        pictureBox1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pictureBox1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pictureBox1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pictureBox1MouseExited(evt);
-            }
-        });
 
         pictureBox2.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/Data menu [119D483].png"))); // NOI18N
         pictureBox2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,28 +149,34 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        logout.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/picture/logout.png"))); // NOI18N
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout shape41Layout = new javax.swing.GroupLayout(shape41);
         shape41.setLayout(shape41Layout);
         shape41Layout.setHorizontalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(pictureBox5, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(pictureBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(pictureBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(pictureBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(pictureBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pictureBox5, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(pictureBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(pictureBox3, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(pictureBox4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         shape41Layout.setVerticalGroup(
             shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape41Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(44, 44, 44)
                 .addComponent(pictureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(pictureBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +186,9 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(belanja, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pictureBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(26, 26, 26)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout DasboardLayout = new javax.swing.GroupLayout(Dasboard);
@@ -204,7 +200,7 @@ public class Admin extends javax.swing.JFrame {
         DasboardLayout.setVerticalGroup(
             DasboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DasboardLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(shape41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
         );
@@ -296,20 +292,6 @@ public class Admin extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_pictureBox2MouseExited
 
-    private void pictureBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pictureBox1MouseClicked
-
-    private void pictureBox1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseEntered
-        setCursor(new Cursor(Cursor.HAND_CURSOR) {
-        });
-    }//GEN-LAST:event_pictureBox1MouseEntered
-
-    private void pictureBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox1MouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR) {
-        });
-    }//GEN-LAST:event_pictureBox1MouseExited
-
     private void pictureBox3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox3MouseClicked
         showForm(daker);
     }//GEN-LAST:event_pictureBox3MouseClicked
@@ -354,6 +336,18 @@ public class Admin extends javax.swing.JFrame {
         showForm(belanja_harian);
     }//GEN-LAST:event_belanjaMouseClicked
 
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin keluar?");
+        if (result == JOptionPane.YES_OPTION) {
+            login log = new login();
+            log.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Batal keluar");
+        }
+    }//GEN-LAST:event_logoutMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -394,8 +388,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private com.swing.background background1;
     private com.swing.PictureBox belanja;
+    private com.swing.PictureBox logout;
     public static final com.swing.MainPanel mainPanel = new com.swing.MainPanel();
-    private com.swing.PictureBox pictureBox1;
     private com.swing.PictureBox pictureBox2;
     private com.swing.PictureBox pictureBox3;
     private com.swing.PictureBox pictureBox4;
