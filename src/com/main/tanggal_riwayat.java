@@ -112,7 +112,6 @@ public class tanggal_riwayat extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(612, 480));
 
         jPanel1.setBackground(new java.awt.Color(238, 247, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -153,10 +152,12 @@ public class tanggal_riwayat extends javax.swing.JFrame {
 
         dateChooser2.setForeground(new java.awt.Color(122, 178, 178));
         dateChooser2.setDateFormat("yyyy-MM-dd");
+        dateChooser2.setTextRefernce(txt_date2);
         background1.add(dateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
 
         dateChooser1.setForeground(new java.awt.Color(122, 178, 178));
         dateChooser1.setDateFormat("yyyy-MM-dd");
+        dateChooser1.setTextRefernce(txt_date1);
         background1.add(dateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         shape71.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
